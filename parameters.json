@@ -1,12 +1,12 @@
 {
   "exp_param": {
-    "experiments_dir": "/path/to/the/directory/where/to/save/everything",
+    "experiments_dir": "./data/res",
     "GPU": [
-      0
+      1
     ]
   },
   "experiments": {
-    "name_your_experiment": {
+    "thy_test": {
       "input_ds": {
         "clustering": {
           "res": 0.15
@@ -15,13 +15,13 @@
           "min_cells": 3,
           "min_genes": 10
         },
-        "raw_input": "/path/to/the/directory/containing/the/raw/data.h5ad",
+        "raw_input": "./data/thy.h5ad",
         "scale": "normalize_per_cell_LS_20000",
         "split": {
           "balanced_split": true,
           "split_seed": "default",
           "test_cells": 0,
-          "valid_cells": 2000
+          "valid_cells": 100
         }
       },
       "training": {
