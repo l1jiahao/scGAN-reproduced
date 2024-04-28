@@ -80,6 +80,7 @@ class GeneMatrix:
         self.balanced_split = hparam['input_ds']['split']['balanced_split']
         self.split_seed = hparam['input_ds']['split']['split_seed']
 
+        # 这里会读取聚类的 resolution
         self.cluster_res = hparam['input_ds']['clustering']['res']
 
         self.min_genes = hparam['input_ds']['filtering']['min_genes']
@@ -359,6 +360,7 @@ class GeneMatrix:
 
         """
         # apply clustering when needed
+        # 所有数据都会进行聚类?
         self.clustering()
 
         # apply basic global filtering and scaling

@@ -6,7 +6,7 @@
     ]
   },
   "experiments": {
-    "thy_test": {
+    "muris_train": {
       "input_ds": {
         "clustering": {
           "res": 0.15
@@ -15,8 +15,8 @@
           "min_cells": 3,
           "min_genes": 10
         },
-        "raw_input": "./data/thy.h5ad",
-        "scale": "normalize_per_cell_LS_20000",
+        "raw_input": "./data/h5ad_data/muris.h5ad",
+        "scale": "normalize_per_cell_LS_10000",
         "split": {
           "balanced_split": true,
           "split_seed": "default",
@@ -47,7 +47,7 @@
       "model": {
         "type": "cscGAN",
         "latent_dim": 128,
-        "output_LSN": 20000,
+        "output_LSN": 10000,
         "critic_layers": [
           1024,
           512,

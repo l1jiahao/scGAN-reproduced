@@ -136,8 +136,10 @@ def read_and_serialize(job_path):
     A string to be printed in the main process
     """
 
+    # 初始化一个 h5ad 数据处理对象, 读数据, 读取 parameter 参数 
     sc_data = GeneMatrix(job_path)
 
+    # 聚类, 过滤, 标准化, 降维, 保存数据
     sc_data.apply_preprocessing()
 
     worker_path = join(job_path, 'TF_records')
@@ -153,7 +155,6 @@ def read_and_serialize(job_path):
                                d.genes_no, d.dset, d.cluster)
 
     return 'done with writing for: ' + job_path
-
 
 def process_files(exp_folders):
     """

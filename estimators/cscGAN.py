@@ -607,6 +607,9 @@ class cscGAN:
 
         else:
 
+            # batches_no = int(np.ceil(cells_no / self.batch_size))
+            print('cells_no:' , cells_no)
+            print('batch_size:', self.batch_size)
             batches_no = int(np.ceil(cells_no / self.batch_size))
 
             clusters_ratios_ph = self.generator.clusters_ratios
