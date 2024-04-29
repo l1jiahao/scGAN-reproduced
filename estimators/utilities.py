@@ -557,7 +557,10 @@ def save_generated_cells(fake_cells, file_name, fake_labels=None):
             categories=natsorted(unique_groups))
 
     sc_fake.obs_names = np.repeat('fake', sc_fake.shape[0])
+
+    # 这里是 make unique 的过程
     sc_fake.obs_names_make_unique()
+    print('after make unique')
 
     sc_fake.write(file_name)
 

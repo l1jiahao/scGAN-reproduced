@@ -592,18 +592,24 @@ class cscGAN:
 
         if clusters_ratios is None and len(cells_no) > 1:
 
+            # 有多个 cluster 应该进入这个分支
             for cluster, cells_per_cluster in enumerate(cells_no):
+                # cluster 是索引值，cells_per_cluster 是数量
                 if int(cells_per_cluster) == 0:
                     continue
+                # 1 行 cluster_no 的向量
                 clusters_ratios = np.zeros((1, self.clusters_no), dtype=np.float)
+                # 把该 cluster 的 cluster ration 设置为 1
                 clusters_ratios[0][cluster] = 1
 
                 fc, fl = self.generate_cells(sess=sess, checkpoint=checkpoint,
                                              cells_no=int(cells_per_cluster),
                                              clusters_ratios=clusters_ratios)
 
+                # 把生成的 cells 和 labels 拼接到 fake_cells 和 fake_labels
                 fake_cells = np.append(fake_cells, fc, axis=0)
                 fake_labels = np.append(fake_labels, fl)
+                # print('fake_cells:', fake_cells.shape)
 
         else:
 
@@ -629,6 +635,7 @@ class cscGAN:
             fake_labels = fake_labels[0:cells_no]
             fake_cells = fake_cells[0:cells_no]
 
+        # rescale 干嘛的？ 后处理？
         rescale(fake_cells, scaling=self.scaling, scale_value=self.scale_value)
 
         if save_path is not None:
